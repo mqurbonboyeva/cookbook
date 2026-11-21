@@ -1,0 +1,10 @@
+[
+  {"model": "recipes.category", "pk": 1, "fields": {"name": "Nonushta", "slug": "nonushta", "icon": "bi-cup-hot"}},
+  {"model": "recipes.category", "pk": 2, "fields": {"name": "Tushlik", "slug": "tushlik", "icon": "bi-egg-fried"}},
+  {"model": "recipes.category", "pk": 3, "fields": {"name": "Kechki ovqat", "slug": "kechki-ovqat", "icon": "bi-moon-stars"}},
+  {"model": "recipes.category", "pk": 4, "fields": {"name": "Salatlar", "slug": "salatlar", "icon": "bi-flower1"}},
+  {"model": "recipes.category", "pk": 5, "fields": {"name": "Sho'rvalar", "slug": "shorvalar", "icon": "bi-droplet-half"}},
+  {"model": "recipes.category", "pk": 6, "fields": {"name": "Shirinliklar", "slug": "shirinliklar", "icon": "bi-cake2"}},
+  {"model": "recipes.category", "pk": 7, "fields": {"name": "Ichimliklar", "slug": "ichimliklar", "icon": "bi-cup-straw"}},
+  {"model": "recipes.category", "pk": 8, "fields": {"name": "Milliy taomlar", "slug": "milliy-taomlar", "icon": "bi-star"}}
+]
