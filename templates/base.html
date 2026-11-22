@@ -12,13 +12,29 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" style="color: var(--cb-green)" href="/">CookBook</a>
+      <a class="navbar-brand fw-bold" style="color: var(--cb-green)" href="{% url 'home' %}">CookBook</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="/">Bosh sahifa</a></li>
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Bosh sahifa</a></li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:profile' %}">{{ user.first_name|default:user.email }}</a>
+            </li>
+            <li class="nav-item">
+              <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link nav-link">Chiqish</button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Kirish</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-cb" href="{% url 'accounts:register' %}">Ro'yxatdan o'tish</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -27,7 +43,7 @@
   <main class="container py-4">
     {% if messages %}
       {% for message in messages %}
-        <div class="alert alert-info">{{ message }}</div>
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'info' }}{% endif %}">{{ message }}</div>
       {% endfor %}
     {% endif %}
     {% block content %}{% endblock %}
